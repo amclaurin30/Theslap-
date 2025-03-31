@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Chatroom</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('img/messagepage3.jpg') no-repeat center center fixed;
+            background-size: cover;
+            backdrop-filter: blur(5px);
+            display: flex;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 20px auto;
+            width: 80%;
+            cursor: pointer;
+        }
+
+        .friend {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid white;
+        }
+
+        .friend img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .chat-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 50px auto;
+            flex-grow: 1;
+            flex-wrap: wrap;
+        }
+
+        .chat-window {
+            width: 450px;
+            background: white;
+            border: 2px solid black;
+            padding: 10px;
+            display: none;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background: blue;
+            color: white;
+            padding: 5px;
+            text-align: left;
+        }
+
+        .chat-messages {
+            height: 250px;
+            background: #f0f0f0;
+            overflow-y: auto;
+            padding: 10px;
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .chat-input {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+
+        .chat-input input {
+            flex-grow: 1;
+            padding: 5px;
+        }
+
+        /* Pop-up notification styles */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: none;
+            font-size: 18px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <!-- Clickable Logo -->
+        <a href="index.html">
+            <img src="img/THE SLAP LOGO.png" alt="Home Logo" class="logo">
+            
+        </a>
+Chatgpt
+        <h3>Friends</h3>
+        <div class="friend" onclick="openChat('Alex')"><img src="img/messagepfp.jpg" alt="Alex"> Alex</div>
+        <div class="friend" onclick="openChat('Jamie')"><img src="img/messageprf3.jpg" alt="Jamie"> Jamie</div>
+        <div class="friend" onclick="openChat('Morgan')"><img src="img/messageprf2.jpg" alt="Morgan"> Morgan</div>
+        <div class="friend" onclick="openChat('Taylor')"><img src="img/messagepfp4.jpg" alt="Taylor"> Taylor</div>
+        <div class="friend" onclick="openChat('Jordan')"><img src="img/messageprf5.jpg" alt="Jordan"> Jordan</div>
+    </div>
+
+    <div class="chat-container" id="chatContainer"></div>
+
+    <!-- Pop-up Notification -->
+    <div class="popup" id="popupMessage">You have a message</div>
+
+    <script>
+        function openChat(name) {
+            let chatContainer = document.getElementById("chatContainer");
+            let chatId = `chat_${name}`;
+            
+            if (!document.getElementById(chatId)) {
+                let chatWindow = document.createElement("div");
+                chatWindow.className = "chat-window";
+                chatWindow.id = chatId;
+                chatWindow.innerHTML = `
+                    <div class="chat-header">Chat with ${name}</div>
+                    <div class="chat-messages" id="messages_${name}"></div>
+                    <div class="chat-input">
+                        <input type="text" id="input_${name}" placeholder="Type a message..." onkeypress="handleEnter(event, '${name}')">
+                        <button onclick="sendMessage('${name}')">Send</button>
+                    </div>
+                `;
+                chatContainer.appendChild(chatWindow);
+            }
+            document.getElementById(chatId).style.display = "flex";
+
+            if (name === "Alex") {
+                setTimeout(() => receiveMessage(name, "Did you see that video?"), 1000);
+            }
+            if (name === "Morgan") {
+                setTimeout(() => receiveMessage(name, "Hello, how are you?"), 1000);
+            }
+        }
+
+        function sendMessage(name) {
+            let chatMessages = document.getElementById(`messages_${name}`);
+            let inputField = document.getElementById(`input_${name}`);
+            let message = inputField.value.trim();
+            
+            if (message) {
+                let messageElement = document.createElement("p");
+                messageElement.innerHTML = `<strong>👤 You:</strong> ${message}`;
+                chatMessages.appendChild(messageElement);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                inputField.value = ""; 
+
+                setTimeout(() => generateAutoResponse(name, message), 1000);
+                showPopup();
+            }
+        }
+
+        function receiveMessage(name, message) {
+            let chatMessages = document.getElementById(`messages_${name}`);
+            let messageElement = document.createElement("p");
+            messageElement.innerHTML = `<strong>💬 ${name}:</strong> ${message}`;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function generateAutoResponse(name, userMessage) {
+            if (name === "Morgan" && userMessage.toLowerCase() === "good") {
+                setTimeout(() => receiveMessage(name, "Glad to hear that!"), 1000);
+            } 
+            if (name === "Alex" && userMessage.toLowerCase().includes("yes")) {
+                setTimeout(() => receiveMessage(name, "Haha, I knew you’d love it!"), 1000);
+            }
+        }
+
+        function showPopup() {
+            let popup = document.getElementById("popupMessage");
+            popup.style.display = "block";
+            setTimeout(() => { popup.style.display = "none"; }, 3000);
+        }
+
+        function handleEnter(event, name) {
+            if (event.key === "Enter") {
+                sendMessage(name);
+            }
+        }
+
+        window.onload = function () {
+            showPopup();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 50px 0 0;
+            
+          
+            background-image:url('videos/postbackground.gif') 
+    
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+        .post {
+            width: 500px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+        }
+        .post:hover {
+            transform: scale(1.05);
+        }
+        .post img {
+            width: 100%;
+            border-radius: 10px;
+            display: none;
+        }
+        .actions {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .like-btn {
+            cursor: pointer;
+            font-size: 24px;
+            margin-right: 10px;
+            transition: transform 0.2s;
+        }
+        .like-btn:active {
+            transform: scale(1.2);
+        }
+        .liked {
+            color: red;
+        }
+        .caption {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .comments {
+            margin-top: 15px;
+        }
+        .upload-section, .camera-section {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        video, canvas {
+            display: block;
+            margin: auto;
+            width: 350px;
+            border-radius: 15px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="logo">
+        <img src="img/THE SLAP LOGO.png" alt="Home">
+        </a>
+        chatgpt
+    <div class="camera-section">
+        <video id="video" autoplay></video>
+        <button onclick="takePicture()">Capture Photo</button>
+        <canvas id="canvas" style="display:none;"></canvas>
+    </div>
+    <div class="post">
+        <img id="postImage" src="" alt="Post Image">
+        <div class="actions">
+            <span class="like-btn">❤️</span>
+            <span id="like-count">0</span> likes
+        </div>
+        <div class="caption">
+            <strong>User</strong> <span id="caption">#memories</span>
+        </div>
+        <div class="comments">
+            <input type="text" id="comment-input" placeholder="Add a comment...">
+            <button onclick="addComment()">Post</button>
+            <ul id="comment-list"></ul>
+        </div>
+    </div>
+
+    <script>
+        let likeCount = 0;
+        const likeBtn = document.querySelector(".like-btn");
+        const likeCounter = document.getElementById("like-count");
+        const postImage = document.getElementById("postImage");
+        const video = document.getElementById("video");
+        const canvas = document.getElementById("canvas");
+        const caption = document.getElementById("caption");
+
+        likeBtn.addEventListener("click", function () {
+            if (likeBtn.classList.contains("liked")) {
+                likeBtn.classList.remove("liked");
+                likeCount--;
+            } else {
+                likeBtn.classList.add("liked");
+                likeCount++;
+            }
+            likeCounter.textContent = likeCount;
+        });
+
+        function addComment() {
+            const commentInput = document.getElementById("comment-input");
+            const commentList = document.getElementById("comment-list");
+            if (commentInput.value.trim() !== "") {
+                const li = document.createElement("li");
+                li.textContent = commentInput.value;
+                commentList.appendChild(li);
+                commentInput.value = "";
+            }
+        }
+
+        function takePicture() {
+            const context = canvas.getContext("2d");
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            postImage.src = canvas.toDataURL("image/png");
+            postImage.style.display = "block";
+            generateHashtag();
+        }
+
+        function generateHashtag() {
+            const hashtags = ["#swagilicious", "#BruhMoment", "#LookAtAllThoseChickens", "#Yeet", "#BackAtItAgain", "#ItIsWednesdayMyDudes"];
+            caption.textContent = hashtags[Math.floor(Math.random() * hashtags.length)];
+        }
+
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(stream => { video.srcObject = stream; })
+            .catch(err => { console.error("Camera access denied:", err); });
+    </script>
+</body>
+</html>

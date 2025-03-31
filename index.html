@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Slap!</title>
+    <link rel="stylesheet" href="styles.css">
+    <a href="index.html"></a>
+    
+      
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('IMG/Blue background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: black;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .slideshow-container {
+            position: relative;
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .slide {
+            display: none;
+            width: 100%;
+        }
+
+        .slide img {
+            width: 100%;
+            border-radius: 10px;
+        } 
+
+        .dots {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            margin: 5px;
+            background-color: gray;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: background0.3s;
+        }
+
+        .active, .dot:hover {
+            background-color: black;
+        }
+
+       
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            background: gray;
+            border: 1px solid black;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            margin: auto;
+            padding: 10px;
+        }
+
+        .main-content {
+            width: 75%;
+        }
+
+        .sidebar {
+            width: 20%;
+            background:#ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .image-placeholder, .video-placeholder {
+            width: 100%;
+            height: 150px;
+            background: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+        }
+
+        .cta-text {
+            color: white;
+            font-weight: bold;
+        }
+
+        .fun-fact-box {
+            background: #fff8dc;
+            color: #333;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            border: 2px solid #ff9800;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+        }
+
+        .fact-btn {
+            background: #ff9800;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .fact-btn:hover {
+            background: #e68900;
+        }
+    </style>
+</head>
+<body>
+
+  
+<table width="100%" bgcolor="orange">
+    <tr>
+       >
+        <td style="text-align: left; padding: 10px;">
+            <a href="index.html">
+                <img src="IMG/THE SLAP LOGO.png" alt="LOGO" height="100">
+            </a>
+        </td>
+
+       
+        <td style="text-align: right; padding: 10px;">
+            <a href="profile index.html">Profile</a> | 
+            <a href="message index.html">Messages</a> | 
+            <a href="Post index.html">Post</a>
+        </td>
+    </tr>
+</table>
+
+
+   
+<table width="100%" height="300px">
+    <tr>
+        <td align="center">
+            <img src="videos// .gif" alt="Banner Image" width="100%" height="450px">
+        </td>
+    </tr>
+</table>
+
+
+    <div class="container">
+     
+<table width="100%" cellspacing="10">
+    <tr>
+      
+        <td width="30%" valign="top">
+            <img src="IMG/ipod.jpg" alt="Sidebar Image" width="100%">
+        </td>
+
+      
+<td width="75%" style="background: transparent;">
+    <div class="gif-container">
+        <img src="videos/toaster.gif" class="main-content gif-slide" id="gif1" />
+        <img src="videos/aol.gif" class="main-content gif-slide" id="gif2" />
+        <img src="videos/emoji.gif" class="main-content gif-slide" id="gif3" />
+        <img src="videos/flower.gif" class="main-content gif-slide" id="gif4" />
+        <img src="videos/aespa.gif" class="main-content gif-slide" id="gif5" />
+        <img src="videos/cheeseburger.gif" class="main-content gif-slide" id="gif6 />
+image class="main-content gif-slide" id="gif" />
+        
+    </div>
+</td>
+
+<style>
+    .gif-container {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .gif-slide {
+        position: absolute;
+        max-width: 100%;
+        display: none;
+        background: transparent; /* Ensures transparency */
+    }
+</style>
+
+<script>
+    let gifs = document.querySelectorAll(".gif-slide");
+    let currentGif = 0;
+
+    function showGif() {
+        gifs.forEach(gif => gif.style.display = "none"); // Hide all GIFs
+        gifs[currentGif].style.display = "block"; // Show current GIF
+
+        currentGif = (currentGif + 1) % gifs.length; // Loop back to the first GIF
+        setTimeout(showGif, 3000); // Change GIF every 3 seconds
+    }
+
+    // Start GIF slideshow
+    showGif();
+</script>
+
+
+    </tr>
+</table>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Content Section with Profile Pictures -->
+            <table width="100%" cellspacing="9">
+                <tr>
+                    <td bgcolor="#ddd" width="33%" align="center">
+                        <img src="IMG/prfpic5.jpg" class="profile-pic" alt="Profile 1">
+                        <p>Zach</p>
+                        <p>"man today been werid!" -Zach</p>
+                    </td>
+                    <td bgcolor="#ddd" width="33%" align="center">
+                        <img src="IMG/prfpic4.jpg" class="profile-pic" alt="Profile 2">
+                        <p>Gaby</p>
+                        <p>"At the end of the day...its night" - Gaby</p>
+                    </td>
+                    <td bgcolor="#ddd" width="33%" align="center">
+                        <img src="IMG/prfpic3.jpg" class="profile-pic" alt="Profile 3">
+                        <p>Jayden</p>
+                        <p>"You got a dollor baller?"- Jayden</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        
+        <style>
+            
+            .profile-pic {
+                width: 80px; 
+                height: 80px; 
+                border-radius: 50%; 
+                object-fit: cover; 
+                border: 3px solid rgba(0, 0, 0, 0.001); 
+                margin-bottom: 10px;
+            }
+        </style>
+     chatgpt
+         <div class="fun-fact-box">
+            <p id="funFact">Click below to get a fun fact!</p>
+            <button class="fact-btn" onclick="generateFact()">Generate Fun Fact</button>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="main-content">
+       
+        <div class="video-box">
+            <video id="videoPlayer" width="640" height="360" controls autoplay muted playsinline></video>
+            <p>HALIROUS VIDEOS!</p>
+        </div>
+
+        <style>
+            .video-box {
+                width: 60%;
+                max-width: 700px;
+                margin: auto;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.8);
+                border-radius: 15px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+                text-align: center;
+                color: white;
+            }
+        </style>
+Chatgpt
+        <script>
+            const videos = [
+                "videos/bee.mov",
+                "videos/omg.mov",
+                "videos/piano.mov",
+                "videos/compliation.mov"
+            ];
+
+            let currentVideoIndex = 0;
+            const videoPlayer = document.getElementById("videoPlayer");
+
+            function playNextVideo() {
+                if (currentVideoIndex < videos.length) {
+                    videoPlayer.src = videos[currentVideoIndex];
+                    videoPlayer.play();
+                    currentVideoIndex++;
+                } else {
+                    currentVideoIndex = 0;
+                    playNextVideo();
+                }
+            }
+
+            videoPlayer.addEventListener("ended", playNextVideo);
+            playNextVideo(); 
+        </script>
+    </div>
+
+    <div class="sidebar">
+        <h2>📸 POST</h2>
+
+        <div class="slideshow-container">
+            <div class="slide fade">
+                <img src="IMG/postpic.jpg" alt="Image 1">
+            </div>
+            <div class="slide fade">
+                <img src="IMG/postpic1.jpg" alt="Image 2">
+            </div>
+            <div class="slide fade">
+                <img src="IMG/postpic3.jpg" alt="Image 3">
+            </div>
+chatgpt
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+
+        <div class="dots">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+
+        <script>
+            let: slidendex = 0;
+            showSlides();
+
+            function showSlides() {
+                let slides = document.querySelectorAll(".slide");
+                let dots = document.querySelectorAll(".dot");
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slideIndex++;
+                if (slideIndex > slides.length) { slideIndex = 1; }
+                slides[slideIndex - 1].style.display = "block";
+
+                dots.forEach(dot => dot.classList.remove("active"));
+                dots[slideIndex - 1].classList.add("active");
+
+                setTimeout(showSlides, 3000); 
+            }
+
+            function changeSlide(n) {
+                slideIndex += n - 1;
+                showSlides();
+            }
+
+            function currentSlide(n) {
+                slideIndex = n - 1;
+                showSlides();
+            }
+        </script>
+    </div>
+</div>
+
+<style>
+    /* Main layout */
+    .content {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    .main-content {
+        width: 70%;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        width: 28%;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        color: white;
+        text-align: center;
+    }
+
+    /* Slideshow styles */
+    .slideshow-container {
+        position: relative;
+        max-width: 100%;
+    }
+
+    .slide {
+        display: none;
+    }
+
+    .dots {
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    .dot {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+    }
+
+    .dot.active {
+        background-color: #717171;
+    }
+
+    .prev, .next {
+        position: absolute;
+        top: 50%;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        background-color: rgba(0, 0, 0, 0.5);
+        border: none;
+        cursor: pointer;
+        border-radius: 3px;
+        transition: background-color 0.3s;
+    }
+
+    .prev:hover, .next:hover {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .prev {
+        left: 0;
+        transform: translateY(-50%);
+    }
+
+    .next {
+        right: 0;
+        transform: translateY(-50%);
+    }
+</style>
+
+chatgpt
+                <script>
+                    let slideIndex = 0;
+                    showSlides();
+            
+                    function showSlides() {
+                        let slides = document.querySelectorAll(".slide");
+                        let dots = document.querySelectorAll(".dot");
+                        for (let i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        slideIndex++;
+                        if (slideIndex > slides.length) { slideIndex = 1; }
+                        slides[slideIndex - 1].style.display = "block";
+            
+                        // Update active dot
+                        dots.forEach(dot => dot.classList.remove("active"));
+                        dots[slideIndex - 1].classList.add("active");
+            
+                        setTimeout(showSlides, 3000); // Change every 3 seconds
+                    }
+            
+                    function changeSlide(n) {
+                        slideIndex += n - 1;
+                        showSlides();
+                    }
+            
+                    function currentSlide(n) {
+                        slideIndex = n - 1;
+                        showSlides();
+                    }
+                </script>
+            
+            </td>
+        </tr>
+    </table>
+
+    <!-- Footer -->
+    <table width="100%" bgcolor="transparency">
+        <tr>
+            <td align="center">
+                <img src="IMG/THE SLAP LOGO.png" class="Logo"
+                ☎ 📧 📸 🐦 📘
+            >
+        </tr>
+    </table>
+
+    <script>
+        function generateFact() {
+            const facts = [
+                "Bananas are berries, but strawberries aren't!",
+                "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly edible.",
+                "A day on Venus is longer than a year on Venus.",
+                "Octopuses have three hearts and blue blood.",
+                "The Eiffel Tower can grow taller during the summer due to heat expansion."
+            ];
+            const randomFact = facts[Math.floor(Math.random() * facts.length)];
+            document.getElementById("funFact").innerText = randomFact;
+        }
+    </script>
+
+</body>
+</html>
