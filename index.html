@@ -268,36 +268,34 @@ image class="main-content gif-slide" id="gif" />
     </div>
 </div>
 
-<div class="content">
-    <div class="main-content">
-       
-        <div class="video-box">
-            <video id="videoPlayer" width="640" height="360" controls autoplay muted playsinline></video>
-            <p>HILARIOUS VIDEOS!</p>
-        </div>
+<div class="video-box">
+    <video id="videoPlayer" width="640" height="360" controls autoplay muted playsinline></video>
+    <p>HILARIOUS VIDEOS!</p>
+</div>
 
-        <style>
-            .video-box {
-                width: 60%;
-                max-width: 700px;
-                margin: auto;
-                padding: 20px;
-                background: rgba(0, 0, 0, 0.8);
-                border-radius: 15px;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-                text-align: center;
-                color: white;
-            }
-        </style>
+<style>
+    .video-box {
+        width: 60%;
+        max-width: 700px;
+        margin: auto;
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        color: white;
+    }
+</style>
 
-        <script>
-            const videos = [
-            "videos/bee_.mov"
-            "videos/omg_.mov"
-            "videos/piano_.mov"
-            "videos/krispy_kreme.mov"
-            "videos/big_and_famous.mov"
-            ];
+<script>
+    const videos = [
+        "videos/bee_.mov",
+        "videos/omg_.mov",
+        "videos/piano_.mov",
+        "videos/krispy_kreme.mov",
+        "videos/big_and_famous.mov"
+    ];
+</script>
 
             let currentVideoIndex = 0;
             const videoPlayer = document.getElementById("videoPlayer");
