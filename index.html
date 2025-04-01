@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Slap!</title>
-    <link rel="stylesheet" href="styles.css">
-    <a href="index.html"></a>
-    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>The Slap!</title>
+        <link rel="stylesheet" href="styles.css">
+        <a href="index.html"></a>
+    </head>
+    <body>
       
     <style>
         body {
@@ -55,6 +56,8 @@
         .active, .dot:hover {
             background-color: black;
         }
+
+       
 
         a:hover {
             text-decoration: underline;
@@ -143,6 +146,7 @@
                 <img src="IMG/THE_SLAP_LOGO.png" alt="LOGO" height="100">
             </a>
         </td>
+
        
         <td style="text-align: right; padding: 10px;">
             <a href="profile index.html">Profile</a> | 
@@ -175,12 +179,12 @@
       
 <td width="75%" style="background: transparent;">
     <div class="gif-container">
-        <img src="videos/toaster.gif"class="main-content gif-slide"id="gif1"/>
-        <img src="videos/aol.gif"class="main-content gif-slide"id="gif2"/>
-        <img src="videos/emoji.gif"class="main-content gif-slide"id="gif3"/>
-        <img src="videos/flower.gif"class="main-content gif-slide"id="gif4"/>
-        <img src="videos/aespa.gif"class="main-content gif-slide"id="gif5"/>
-        <img src="videos/cheeseburger.gif" class="main-content gif-slide"id="gif6/>
+        <img src="videos/toaster.gif" class="main-content gif-slide" id="gif1" />
+        <img src="videos/aol.gif" class="main-content gif-slide" id="gif2" />
+        <img src="videos/emoji.gif" class="main-content gif-slide" id="gif3" />
+        <img src="videos/flower.gif" class="main-content gif-slide" id="gif4" />
+        <img src="videos/aespa.gif" class="main-content gif-slide" id="gif5" />
+        <img src="videos/cheeseburger.gif" class="main-content gif-slide" id="gif6 />
 image class="main-content gif-slide" id="gif" />
         
     </div>
@@ -224,6 +228,7 @@ image class="main-content gif-slide" id="gif" />
 </table>
 
         <div class="main-content">
+           
             <table width="100%" cellspacing="9">
                 <tr>
                     <td bgcolor="#ddd" width="33%" align="center">
@@ -264,36 +269,38 @@ image class="main-content gif-slide" id="gif" />
     </div>
 </div>
 
-<div class="video-box">
-    <video id="videoPlayer" width="640" height="360" controls autoplay muted playsinline></video>
-    <p>HILARIOUS VIDEOS!</p>
-</div>
+<div class="content">
+    <div class="main-content">
+       
+        <div class="video-box">
+            <video id="videoPlayer" width="640" height="360" controls autoplay muted playsinline></video>
+            <p>HILARIOUS VIDEOS!</p>
+        </div>
 
-<style>
-    .video-box {
-        width: 60%;
-        max-width: 700px;
-        margin: auto;
-        padding: 20px;
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        text-align: center;
-        color: white;
-    }
-</style>
+        <style>
+            .video-box {
+                width: 60%;
+                max-width: 700px;
+                margin: auto;
+                padding: 20px;
+                background: rgba(0, 0, 0, 0.8);
+                border-radius: 15px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+                text-align: center;
+                color: white;
+            }
+        </style>
 
-<script>
-    const videos = [
-        "videos/bee_.mov",
-        "videos/omg_.mov",
-        "videos/piano_.mov",
-        "videos/krispy_kreme.mov",
-        "videos/big_and_famous.mov",
-    ];
-</script>
+        <script>
+            const videos = [
+                "videos/bee.mov",
+                "videos/omg.mov",
+                "video/piano.mov",
+            ];
+
             let currentVideoIndex = 0;
             const videoPlayer = document.getElementById("videoPlayer");
+
             function playNextVideo() {
                 if (currentVideoIndex < videos.length) {
                     videoPlayer.src = videos[currentVideoIndex];
